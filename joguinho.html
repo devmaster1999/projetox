@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosso Joguinho 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to top right, #ffd6e8, #ffe6f0);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .carta {
+      background: white;
+      border-radius: 20px;
+      padding: 6vw;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .mensagem {
+      font-size: 1.1em;
+      color: #d81b60;
+      margin-bottom: 5vw;
+      line-height: 1.5em;
+    }
+
+    button {
+      background-color: #d81b60;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1em;
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+
+    #cora {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .float-heart {
+      position: absolute;
+      color: #ff6090;
+      font-size: 24px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: 0;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mensagem {
+        font-size: 1em;
+      }
+
+      #cora {
+        font-size: 2.5rem;
+      }
+
+      .carta {
+        padding: 20px;
+      }
+
+      button {
+        font-size: 0.95em;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cora">💌</div>
+  <button onclick="mostrarCartinha()">Abrir cartinha</button>
+
+  <div class="carta" id="carta">
+    <div class="mensagem" id="mensagemTexto"></div>
+    <button onclick="proximaMensagem()">Próxima</button>
+  </div>
+
+  <script>
+    const mensagens = [
+      "Desde o nosso primeiro encontro, algo especial nasceu.",
+      "Cada momento com você é um pedacinho de eternidade. 💕",
+      "Sei que ainda não somos namorados, mas sinto que estamos construindo algo lindo. 😊",
+      "A sua presença ilumina os meus dias como um raio de sol ☀️",
+      "Com você, até os dias comuns são mágicos. ✨",
+      "E palavras não podem traduzir a minha gratidão por conhecer você 💘"
+    ];
+
+    let index = 0;
+
+    function mostrarCartinha() {
+      document.querySelector("button").style.display = "none";
+      document.getElementById("carta").style.display = "block";
+      document.getElementById("mensagemTexto").textContent = mensagens[index];
+      criarCoraçoes();
+    }
+
+    function proximaMensagem() {
+      index++;
+      if (index < mensagens.length) {
+        document.getElementById("mensagemTexto").textContent = mensagens[index];
+      } else {
+        document.getElementById("mensagemTexto").textContent = "Próxima fase... ❤️";
+        setTimeout(() => {
+          window.location.href = "joguinho2.html";
+        }, 2000);
+      }
+    }
+
+    function criarCoraçoes() {
+      setInterval(() => {
+        const coracao = document.createElement("div");
+        coracao.className = "float-heart";
+        coracao.style.left = Math.random() * 100 + "vw";
+        coracao.innerHTML = "❤️";
+        document.body.appendChild(coracao);
+
+        setTimeout(() => {
+          coracao.remove();
+        }, 5000);
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>

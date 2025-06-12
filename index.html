@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Joguinho - Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(120deg, #ffe6f0, #ffccdd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 8vw;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 380px;
+      position: relative;
+    }
+
+    h2 {
+      color: #e91e63;
+      font-size: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    .dica-btn {
+      background-color: #ffb6c1;
+      color: #880e4f;
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+
+    .dicas {
+      background-color: #fff0f5;
+      color: #880e4f;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+      display: none;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      input,
+      button {
+        font-size: 1rem;
+      }
+
+      .dica-btn {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Bem-vinda 💖</h2>
+    <input type="text" id="codinome" placeholder="Codinome do casal" />
+    <input type="text" id="dataPrimeiroEncontro" placeholder="Data em que nos conhecemos" />
+    <button onclick="verificarRespostas()">Entrar</button>
+    <button class="dica-btn" onclick="mostrarDicas()">Ver Dicas 💡</button>
+
+    <div class="dicas" id="blocoDicas">
+      <p><strong>Codinome do casal:</strong></p>
+      <p>Tem 3 opções para facilitar, tenta juntar nossos nomes, uma vez eu falei. </p>
+      <p><strong>Data:</strong>A data deve ser no formato: DIA/MÊS/ANO</p>
+    </div>
+
+    <div class="error" id="mensagemErro"></div>
+  </div>
+
+  <script>
+    const CODINOMES_VALIDOS = ["FEICI", "CLEINANDO", "FERMAR"];
+    const DATA_CORRETA = "23/03/2025";
+
+    function verificarRespostas() {
+      const codinomeInput = document.getElementById("codinome").value.trim().toUpperCase();
+      const dataInput = document.getElementById("dataPrimeiroEncontro").value.trim();
+      const mensagemErro = document.getElementById("mensagemErro");
+
+      const codinomeValido = CODINOMES_VALIDOS.includes(codinomeInput);
+      const dataValida = dataInput === DATA_CORRETA;
+
+      if (codinomeValido && dataValida) {
+        window.location.href = "joguinho.html";
+      } else {
+        mensagemErro.textContent = "Hmm... alguma resposta está errada 💔";
+      }
+    }
+
+    function mostrarDicas() {
+      const dicas = document.getElementById("blocoDicas");
+      dicas.style.display = dicas.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nosso Joguinho 💖</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to top right, #ffd6e8, #ffe6f0);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .fase {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .fase.ativa {
+            display: flex;
+        }
+
+        .mensagem {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #d81b60;
+        }
+
+        .imagem {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 40px;
+        }
+
+        button:hover {
+            background-color: #c2185b;
+        }
+
+        #cora {
+            font-size: 2.5rem;
+            animation: pulse 1.5s infinite;
+            margin-top: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .float-heart {
+            position: absolute;
+            color: #ff6090;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% {
+                bottom: 0;
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mensagem {
+                font-size: 1rem;
+            }
+
+            button {
+                font-size: 0.95rem;
+                padding: 10px 20px;
+            }
+
+            #cora {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="cora">💌</div>
+
+        <!-- Fases -->
+        <div class="fase ativa" id="fase0">
+            <div class="mensagem">Oi neném, que bom que você chegou até aqui! 💕</div>
+            <div class="mensagem">Vamos passar por algumas fases agora... 💕</div>
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase1">
+            <div class="mensagem">FASE 1: Nossa primeira foto juntos... Nosso primeiro rolê kkkk</div>
+            <img src="img/foto1.jpeg" class="imagem" alt="foto1" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase2">
+            <div class="mensagem">A segunda fotinha...</div>
+            <img src="img/foto2.jpeg" class="imagem" alt="foto2" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase3">
+            <div class="mensagem">FASE 2: Minha modelo preferida ❤️</div>
+            <img src="img/foto3.jpeg" class="imagem" alt="foto3" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase4">
+            <img src="img/foto4.jpeg" class="imagem" alt="foto4" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase5">
+            <img src="img/foto5.jpeg" class="imagem" alt="foto5" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase6">
+            <img src="img/foto6.jpeg" class="imagem" alt="foto6" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase7">
+            <img src="img/foto7.jpeg" class="imagem" alt="foto7" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase8">
+            <div class="mensagem">FASE 3: Deixe ela com o coco dela 💖</div>
+            <img src="img/pensando.jpeg" class="imagem" alt="pensando" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase9">
+            <div class="mensagem">Tinha um coco grandao né...</div>
+            <img src="img/grandao.jpeg" class="imagem" alt="grandao" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase10">
+            <div class="mensagem">Cara de quem quer aprontar...</div>
+            <img src="img/aprontar.jpeg" class="imagem" alt="aprontar" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+         <div class="fase" id="fase11">
+            <div class="mensagem">Lembrou de alguma piada minha...</div>
+            <img src="img/rindo.jpeg" class="imagem" alt="rindo" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase12">
+            <div class="mensagem">...close pra foto...</div>
+            <img src="img/sensual.jpeg" class="imagem" alt="sensual" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase13">
+            <div class="mensagem">FASE 4: Beijinhos ❤️</div>
+            <img src="img/beijo1.jpeg" class="imagem" alt="beijo1" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase14">
+            <img src="img/beijo2.jpeg" class="imagem" alt="beijo2" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase15">
+            <div class="mensagem">FASE 5: Obrigado por ser essa pessoa maravilhosa ❤️</div>
+            <img src="img/biquinho.jpeg" class="imagem" alt="biquinho" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase16">
+            <div class="mensagem">Obrigado por ser essa pessoa maravilhosa ❤️</div>
+            <img src="img/retardado.jpeg" class="imagem" alt="retardado" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase17">
+            <div class="mensagem">Obrigado por ser essa pessoa maravilhosa ❤️</div>
+            <img src="img/final.jpeg" class="imagem" alt="final" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase18">
+            <div class="mensagem">Obrigado por ser essa pessoa maravilhosa ❤️</div>
+            <img src="img/foto10.jpeg" class="imagem" alt="foto10" />
+            <button onclick="proximaFase()">Próxima</button>
+        </div>
+
+        <div class="fase" id="fase19">
+            <div class="mensagem">Obrigado por ser essa pessoa maravilhosa ❤️</div>
+            <img src="img/foto11.jpeg" class="imagem" alt="foto11" />
+            <button onclick="finalizar()">Fim</button>
+        </div>
+
+        <div class="fase" id="fim">
+            <div class="mensagem">Fim da jornada... mas não da nossa história! 🌟</div>
+            <div class="mensagem">Feliz dia dos namorados! 💖</div>
+            <div class="mensagem">Aproveite os presentes! Foi de coração ❤️</div>
+            <div style="font-size: 2rem;">💘💘💘</div>
+        </div>
+    </div>
+
+    <script>
+        let faseAtual = 0;
+        const totalFases = 20;
+
+        function proximaFase() {
+            document.getElementById("fase" + faseAtual).classList.remove("ativa");
+            faseAtual++;
+            if (faseAtual < totalFases) {
+                document.getElementById("fase" + faseAtual).classList.add("ativa");
+            }
+        }
+
+        function finalizar() {
+            document.getElementById("fase" + faseAtual).classList.remove("ativa");
+            document.getElementById("fim").classList.add("ativa");
+        }
+
+        function coracoesVoadores() {
+            setInterval(() => {
+                const coracao = document.createElement("div");
+                coracao.className = "float-heart";
+                coracao.style.left = Math.random() * 100 + "vw";
+                coracao.innerHTML = "❤️";
+                document.body.appendChild(coracao);
+
+                setTimeout(() => {
+                    coracao.remove();
+                }, 6000);
+            }, 500);
+        }
+
+        coracoesVoadores();
+    </script>
+
+</body>
+
+</html>
