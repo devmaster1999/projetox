@@ -109,6 +109,7 @@
     <input type="text" id="codinome" placeholder="Codinome do casal" />
     <input type="text" id="dataPrimeiroEncontro" placeholder="Data em que nos conhecemos" />
     <button onclick="verificarRespostas()">Entrar</button>
+    <button onclick="irParaPedido()">Especial 🌟</button>
     <button class="dica-btn" onclick="mostrarDicas()">Ver Dicas 💡</button>
 
     <div class="dicas" id="blocoDicas">
@@ -120,30 +121,35 @@
     <div class="error" id="mensagemErro"></div>
   </div>
 
-  <script>
-    const CODINOMES_VALIDOS = ["FEICI", "CLEINANDO", "FERMAR"];
-    const DATA_CORRETA = "23/03/2025";
+<script>
+  const CODINOMES_VALIDOS = ["FEICI", "CLEINANDO", "FERMAR"];
+  const DATA_CORRETA = "23/03/2025";
 
-    function verificarRespostas() {
-      const codinomeInput = document.getElementById("codinome").value.trim().toUpperCase();
-      const dataInput = document.getElementById("dataPrimeiroEncontro").value.trim();
-      const mensagemErro = document.getElementById("mensagemErro");
+  function verificarRespostas() {
+    const codinomeInput = document.getElementById("codinome").value.trim().toUpperCase();
+    const dataInput = document.getElementById("dataPrimeiroEncontro").value.trim();
+    const mensagemErro = document.getElementById("mensagemErro");
 
-      const codinomeValido = CODINOMES_VALIDOS.includes(codinomeInput);
-      const dataValida = dataInput === DATA_CORRETA;
+    const codinomeValido = CODINOMES_VALIDOS.includes(codinomeInput);
+    const dataValida = dataInput === DATA_CORRETA;
 
-      if (codinomeValido && dataValida) {
-        window.location.href = "joguinho.html";
-      } else {
-        mensagemErro.textContent = "Hmm... alguma resposta está errada 💔";
-      }
+    if (codinomeValido && dataValida) {
+      window.location.href = "joguinho.html";
+    } else {
+      mensagemErro.textContent = "Hmm... alguma resposta está errada 💔";
     }
+  }
 
-    function mostrarDicas() {
-      const dicas = document.getElementById("blocoDicas");
-      dicas.style.display = dicas.style.display === "none" ? "block" : "none";
-    }
-  </script>
+  function mostrarDicas() {
+    const dicas = document.getElementById("blocoDicas");
+    dicas.style.display = dicas.style.display === "none" ? "block" : "none";
+  }
+
+  function irParaPedido() {
+    window.location.href = "pedido.html";
+  }
+</script>
+
 
 </body>
 </html>
