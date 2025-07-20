@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nosso Pedido 💌</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #fff0f5, #ffe4ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .pedido-container {
+            background-color: white;
+            padding: 8vw;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+        }
+
+        h2 {
+            color: #e91e63;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .mensagem-amor {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .mensagem-amor p {
+            margin-bottom: 10px;
+        }
+
+        .resposta {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .resposta label {
+            margin: 0 10px;
+            font-size: 1.1rem;
+            color: #880e4f;
+        }
+
+        .coração {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 15rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pedido-container">
+        <h2>Confirma uma data especial 💘</h2>
+        <p></p>
+        <input type="text" id="dataBeijo" placeholder="Primeiro beijo (Ex: 01/01/1999)" />
+        <button onclick="verificarData()">Confirmar</button>
+
+        <div class="error" id="erroData"></div>
+
+        <div class="mensagem-amor" id="mensagemAmor">
+            <p>Você me conquistou de um jeito que ninguém nunca conseguiu 💖</p>
+            <p>Desde o nosso primeiro beijo em <strong>30/03/2025</strong>, se passaram <strong>74 dias</strong> até
+                este dia 12/06/2025.</p>
+            <p>Todos esses dias foram cheios de carinho, de risadas e de momentos que eu nunca vou esquecer.</p>
+            <p>Hoje, no Dia dos Namorados, eu só queria te perguntar uma coisa...</p>
+        </div>
+
+        <div class="resposta" id="areaPedido">
+            <p>Quer namorar comigo? 💌</p>
+            <label><input type="radio" name="resposta" value="sim" onclick="responderPedido(true)"> Sim</label>
+            <label><input type="radio" name="resposta" value="nao" onclick="responderPedido(false)"> Não</label>
+        </div>
+    </div>
+
+    <div id="coraçaoTela" class="coração"></div>
+
+    <script>
+        const DATA_BEIJO = "30/03/2025";
+        const DATA_PEDIDO = new Date("2025-06-12");
+        const erro = document.getElementById("erroData");
+        const mensagem = document.getElementById("mensagemAmor");
+        const areaPedido = document.getElementById("areaPedido");
+
+        function verificarData() {
+            const input = document.getElementById("dataBeijo").value.trim();
+
+            if (input === DATA_BEIJO) {
+                erro.textContent = "";
+                mensagem.style.display = "block";
+                areaPedido.style.display = "block";
+            } else {
+                erro.textContent = "Hmm... essa não é a data do nosso primeiro beijo 💔";
+                mensagem.style.display = "none";
+                areaPedido.style.display = "none";
+            }
+        }
+
+        let tentativasNao = 0;
+
+        function responderPedido(aceitou) {
+            const coracao = document.getElementById("coraçaoTela");
+            const areaPedido = document.getElementById("areaPedido");
+
+            if (aceitou) {
+                coracao.textContent = "❤️";
+                coracao.style.display = "flex";
+                return;
+            }
+
+            tentativasNao++;
+
+            if (tentativasNao === 1) {
+                // Primeira vez que ela disse "não"
+                areaPedido.innerHTML = `
+          <p>Tem certeza? 😢 Me dá mais uma chance de te perguntar...</p>
+          <label><input type="radio" name="resposta2" value="sim" onclick="responderPedido(true)"> Sim</label>
+          <label><input type="radio" name="resposta2" value="nao" onclick="responderPedido(false)"> Não</label>
+        `;
+            } else if (tentativasNao === 2) {
+                // Segunda vez que ela disse "não"
+                areaPedido.innerHTML = `
+          <p>Ok... então deixa eu te fazer uma última proposta 🥺</p>
+          <p>Quer apenas continuar como se fôssemos um casal, postando coisas juntos, saindo todo fim de semana, e com nossos nomes na bio? 💞</p>
+          <label><input type="radio" name="resposta3" value="sim" onclick="responderPedido(true)"> Sim</label>
+          <label><input type="radio" name="resposta3" value="nao" onclick="responderPedido(false)"> Não</label>
+        `;
+            } else {
+                // 3ª vez que ela diz não 😭
+                coracao.textContent = "💔";
+                coracao.style.display = "flex";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
